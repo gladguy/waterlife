@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SachiSa Aqua Alkaline — UAE's #1 Water Purifier</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --sky-50: #f0f9ff;
+            --sky-100: #e0f2fe;
+            --sky-200: #bae6fd;
+            --sky-300: #7dd3fc;
+            --sky-400: #38bdf8;
+            --sky-500: #0ea5e9;
+            --sky-600: #0284c7;
+            --sky-700: #0369a1;
+            --teal-400: #2dd4bf;
+            --teal-500: #14b8a6;
+            --teal-600: #0d9488;
+            --blue-500: #3b82f6;
+            --blue-600: #2563eb;
+            --white: #ffffff;
+            --text-dark: #0c2340;
+            --text-mid: #1e4976;
+            --text-muted: #5c85a5;
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(14, 165, 233, 0.18);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(150deg, #e0f7ff 0%, #c8eeff 25%, #d4f1ff 50%, #b8e8f8 75%, #cef5ff 100%);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ── ANIMATED BACKGROUND ── */
+        #bg-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.55;
+        }
+
+        .sky-blob {
+            position: fixed;
+            border-radius: 55% 45% 60% 40% / 40% 60% 45% 55%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+            animation: skyMorph 14s ease-in-out infinite;
+        }
+
+        .sb1 {
+            width: 700px;
+            height: 550px;
+            background: rgba(14, 165, 233, 0.12);
+            top: -180px;
+            right: -200px;
+            animation-delay: 0s;
+        }
+
+        .sb2 {
+            width: 500px;
+            height: 420px;
+            background: rgba(13, 148, 136, 0.1);
+            bottom: -100px;
+            left: -150px;
+            animation-delay: -5s;
+        }
+
+        .sb3 {
+            width: 350px;
+            height: 300px;
+            background: rgba(56, 189, 248, 0.1);
+            top: 45%;
+            left: 38%;
+            animation-delay: -9s;
+            border-radius: 40% 60%;
+        }
+
+        @keyframes skyMorph {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1)
+            }
+
+            33% {
+                transform: translate(30px, -40px) scale(1.05)
+            }
+
+            66% {
+                transform: translate(-20px, 25px) scale(0.96)
+            }
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 48px;
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(22px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 2px 20px rgba(14, 165, 233, 0.08);
+            transition: background 0.3s;
+        }
+
+        .nav-logo-wrap {}
+
+        .nav-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--sky-600), var(--teal-600));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-sub {
+            font-size: 10px;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-mid);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--sky-500);
+            transform: scaleX(0);
+            transition: transform 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--sky-600);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--sky-500), var(--teal-600));
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(14, 165, 233, 0.3);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(14, 165, 233, 0.45);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 140px 80px 80px;
+            gap: 60px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(14, 165, 233, 0.12);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 30px;
+            padding: 8px 18px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--sky-700);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--teal-500);
+            border-radius: 50%;
+            animation: livePulse 2s infinite;
+        }
+
+        @keyframes livePulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(14, 185, 163, 0.5)
+            }
+
+            60% {
+                box-shadow: 0 0 0 8px rgba(14, 185, 163, 0)
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 5vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--text-dark);
+            margin-bottom: 18px;
+            animation: fadeUp 0.9s ease 0.1s both;
+        }
+
+        .hero h1 .accent {
+            background: linear-gradient(135deg, var(--sky-500), var(--teal-500));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 17px;
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 30px;
+            animation: fadeUp 1s ease 0.2s both;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 34px;
+            animation: fadeUp 1.1s ease 0.3s both;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-mid);
+        }
+
+        .feat-icon-wrap {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: rgba(14, 165, 233, 0.12);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            animation: fadeUp 1.2s ease 0.4s both;
+        }
+
+        .btn-sky {
+            background: linear-gradient(135deg, var(--sky-500), var(--teal-600));
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 28px rgba(14, 165, 233, 0.35);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-sky:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 44px rgba(14, 165, 233, 0.5);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.75);
+            color: var(--sky-700);
+            border: 1.5px solid rgba(14, 165, 233, 0.3);
+            padding: 15px 36px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.25s, transform 0.25s;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-3px);
+        }
+
+        /* ── HERO VISUAL (rings) ── */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeUp 1s ease 0.3s both;
+        }
+
+        .ring-container {
+            position: relative;
+            width: 380px;
+            height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1.5px solid rgba(14, 165, 233, 0.2);
+            animation: ringPulse 4s ease-in-out infinite;
+        }
+
+        .ring-1 {
+            width: 380px;
+            height: 380px;
+            animation-delay: 0s;
+        }
+
+        .ring-2 {
+            width: 300px;
+            height: 300px;
+            animation-delay: -1s;
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
+        .ring-3 {
+            width: 220px;
+            height: 220px;
+            animation-delay: -2s;
+            border-color: rgba(14, 165, 233, 0.4);
+        }
+
+        .ring-4 {
+            width: 140px;
+            height: 140px;
+            animation-delay: -3s;
+            border-color: rgba(14, 165, 233, 0.5);
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.15), transparent);
+        }
+
+        @keyframes ringPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8
+            }
+
+            50% {
+                transform: scale(1.04);
+                opacity: 1
+            }
+        }
+
+        .center-emblem {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .emblem-emoji {
+            font-size: 52px;
+            display: block;
+            margin-bottom: 8px;
+            animation: floatUp 5s ease-in-out infinite;
+        }
+
+        @keyframes floatUp {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-12px)
+            }
+        }
+
+        .emblem-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--sky-600);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .emblem-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 4px;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-48px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(48px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 96px 24px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--sky-600);
+            margin-bottom: 10px;
+        }
+
+        .section-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            color: var(--text-muted);
+            font-size: 17px;
+            line-height: 1.75;
+            max-width: 620px;
+        }
+
+        /* ── ALT SECTION ── */
+        .alt-bg {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        /* ── BIOCERA ── */
+        .biocera-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 56px;
+        }
+
+        .biocera-text p {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .biocera-text p strong {
+            color: var(--text-dark);
+        }
+
+        .biocera-highlight {
+            background: rgba(14, 165, 233, 0.08);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 18px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .biocera-highlight h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--sky-700);
+            margin-bottom: 8px;
+        }
+
+        .biocera-highlight p {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Comparison Table */
+        .compare-table {
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(14, 165, 233, 0.1);
+        }
+
+        .compare-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            text-align: center;
+        }
+
+        .compare-cell {
+            padding: 14px 10px;
+            font-size: 14px;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.08);
+        }
+
+        .compare-cell.label {
+            font-weight: 600;
+            color: var(--text-mid);
+            text-align: left;
+        }
+
+        .compare-cell.good {
+            color: var(--teal-600);
+            font-weight: 700;
+        }
+
+        .compare-cell.bad {
+            color: #dc2626;
+        }
+
+        .compare-header {
+            background: linear-gradient(135deg, var(--sky-100), var(--sky-200));
+        }
+
+        .compare-header .compare-cell {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--sky-700);
+            border-bottom: none;
+            padding: 16px 10px;
+        }
+
+        .compare-row:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .compare-row:nth-child(even) {
+            background: rgba(14, 165, 233, 0.03);
+        }
+
+        .compare-row:last-child .compare-cell {
+            border-bottom: none;
+        }
+
+        /* ── 8 STAGES ── */
+        .stage-row {
+            display: flex;
+            gap: 0;
+            align-items: stretch;
+            position: relative;
+        }
+
+        .stage-row::before {
+            content: '';
+            position: absolute;
+            left: 38px;
+            top: 74px;
+            bottom: -20px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--sky-400), transparent);
+        }
+
+        .stage-row:last-child::before {
+            display: none;
+        }
+
+        .stage-col {
+            width: 80px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 4px;
+        }
+
+        .stage-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sky-400), var(--sky-600));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 900;
+            color: #fff;
+            box-shadow: 0 4px 18px rgba(14, 165, 233, 0.3);
+            flex-shrink: 0;
+        }
+
+        .stage-body {
+            flex: 1;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin-left: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 14px rgba(14, 165, 233, 0.06);
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stage-body:hover {
+            border-color: var(--sky-400);
+            transform: translateX(6px);
+            box-shadow: 0 8px 28px rgba(14, 165, 233, 0.14);
+        }
+
+        .stage-tag {
+            display: inline-block;
+            background: rgba(14, 165, 233, 0.12);
+            color: var(--sky-700);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+        }
+
+        .stage-body h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .stage-body p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ── BENEFITS ── */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 52px;
+        }
+
+        .benefit-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px 26px;
+            box-shadow: 0 3px 18px rgba(14, 165, 233, 0.07);
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--sky-400), var(--teal-400));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(14, 165, 233, 0.35);
+            box-shadow: 0 16px 46px rgba(14, 165, 233, 0.14);
+        }
+
+        .benefit-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .benefit-card .b-icon {
+            font-size: 36px;
+            margin-bottom: 14px;
+        }
+
+        .benefit-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .benefit-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ── MIRACLE BANNER ── */
+        .miracle-section {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.08), rgba(13, 148, 136, 0.06));
+            border-top: 1px solid rgba(14, 165, 233, 0.12);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.12);
+        }
+
+        .miracle-icons {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin: 36px 0;
+            flex-wrap: wrap;
+        }
+
+        .miracle-item {
+            text-align: center;
+        }
+
+        .miracle-item .m-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .miracle-item .m-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--sky-700);
+        }
+
+        /* ── PRICING ── */
+        .pricing-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            max-width: 900px;
+            margin: 56px auto 0;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 26px;
+            padding: 42px 38px;
+            box-shadow: 0 4px 24px rgba(14, 165, 233, 0.08);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .price-card.featured {
+            border-color: rgba(14, 165, 233, 0.4);
+            box-shadow: 0 16px 56px rgba(14, 165, 233, 0.16);
+        }
+
+        .price-card.featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--sky-400), var(--teal-400));
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            color: #7c2d00;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .price-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .big-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--sky-700);
+            line-height: 1;
+            margin: 18px 0 4px;
+        }
+
+        .big-price sup {
+            font-size: 22px;
+            vertical-align: super;
+        }
+
+        .price-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 26px;
+        }
+
+        .includes-list {
+            list-style: none;
+        }
+
+        .includes-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 0;
+            font-size: 14px;
+            color: var(--text-mid);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.08);
+        }
+
+        .includes-list li:last-child {
+            border: none;
+        }
+
+        .check-good {
+            color: var(--sky-500);
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* ── CONTACT ── */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 52px;
+            align-items: start;
+        }
+
+        .ci-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .ci-item {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .ci-item:last-child {
+            border: none;
+        }
+
+        .ci-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .ci-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .ci-value {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .ci-sub {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .brand-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 22px;
+            padding: 38px;
+            box-shadow: 0 4px 24px rgba(14, 165, 233, 0.08);
+        }
+
+        .brand-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 14px;
+        }
+
+        .brand-card p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 18px;
+        }
+
+        .brand-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            color: var(--sky-700);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 18px;
+            border-radius: 20px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, var(--sky-500), var(--teal-600));
+            padding: 48px 24px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-logo-wrap {}
+
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .footer-tagline {
+            font-size: 13px;
+            opacity: 0.75;
+            margin-top: 4px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 24px auto 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            opacity: 0.65;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.18), transparent);
+            margin: 0 24px;
+        }
+
+        /* ── WHATSAPP BUTTON ── */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            background: #25D366;
+            color: #fff;
+            border-radius: 50px;
+            padding: 14px 22px 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 6px 28px rgba(37, 211, 102, 0.45);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: waBounce 2.5s ease-in-out infinite;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.55);
+            animation: none;
+        }
+
+        .whatsapp-btn svg {
+            width: 26px;
+            height: 26px;
+            flex-shrink: 0;
+        }
+
+        @keyframes waBounce {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            40% {
+                transform: translateY(-6px)
+            }
+
+            60% {
+                transform: translateY(-3px)
+            }
+        }
+
+        .wa-pulse {
+            position: fixed;
+            bottom: 36px;
+            right: 36px;
+            z-index: 998;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(37, 211, 102, 0.25);
+            animation: waPulse 2.5s ease-out infinite;
+        }
+
+        @keyframes waPulse {
+            0% {
+                transform: scale(0.9);
+                opacity: 1
+            }
+
+            100% {
+                transform: scale(2.2);
+                opacity: 0
+            }
+        }
+
+        /* ── SOUND BUTTON ── */
+        .sound-btn {
+            position: fixed;
+            bottom: 28px;
+            left: 28px;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(14, 165, 233, 0.3);
+            border-radius: 50px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--sky-700);
+            box-shadow: 0 4px 18px rgba(14, 165, 233, 0.14);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .sound-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 28px rgba(14, 165, 233, 0.22);
+        }
+
+        /* ── PRODUCT HERO IMAGE ── */
+        .product-hero-img-wrap {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-glow {
+            position: absolute;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, transparent 70%);
+            filter: blur(40px);
+            animation: glowPulse 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8
+            }
+
+            50% {
+                transform: scale(1.12);
+                opacity: 1
+            }
+        }
+
+        .product-hero-img {
+            position: relative;
+            z-index: 1;
+            max-width: 380px;
+            width: 100%;
+            filter: drop-shadow(0 24px 48px rgba(14, 165, 233, 0.35)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+            animation: floatProd 5s ease-in-out infinite;
+            border-radius: 20px;
+        }
+
+        @keyframes floatProd {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-14px)
+            }
+        }
+
+        .product-badge-float {
+            position: absolute;
+            top: 16px;
+            right: 0;
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            color: #7c2d00;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 6px 16px;
+            border-radius: 20px;
+            z-index: 2;
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+            letter-spacing: 0.5px;
+        }
+
+        /* ── PRODUCT SHOWCASE SECTION ── */
+        .product-showcase {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .ps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .ps-img-frame {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ps-glow-ring {
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, transparent 65%);
+            filter: blur(50px);
+            z-index: 0;
+            animation: glowPulse 5s ease-in-out infinite;
+        }
+
+        .ps-img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 440px;
+            border-radius: 24px;
+            filter: drop-shadow(0 32px 64px rgba(14, 165, 233, 0.28)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12));
+            animation: floatProd 6s ease-in-out infinite;
+            transition: filter 0.3s;
+        }
+
+        .ps-img:hover {
+            filter: drop-shadow(0 40px 80px rgba(14, 165, 233, 0.4)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.15));
+        }
+
+        .ps-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--sky-700);
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            padding: 8px 18px;
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        .ps-label-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--sky-500);
+            border-radius: 50%;
+            animation: livePulse 2s infinite;
+        }
+
+        .ps-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .ps-spec {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(14, 165, 233, 0.14);
+            border-radius: 14px;
+            padding: 14px 16px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .ps-spec:hover {
+            border-color: rgba(14, 165, 233, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .ps-spec-icon {
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .ps-spec-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .ps-spec-val {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 2px;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width:900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 120px 24px 60px;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            nav {
+                padding: 14px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .biocera-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .pricing-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width:560px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sky-blob sb1"></div>
+    <div class="sky-blob sb2"></div>
+    <div class="sky-blob sb3"></div>
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Water Sound -->
+    <audio id="water-audio" loop>
+        <source src="https://www.soundjay.com/nature/sounds/water-stream-1.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-river-flowing-quickly-2326.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Sound Toggle -->
+    <button class="sound-btn" id="sound-toggle" onclick="toggleSound()" aria-label="Toggle water sound">
+        <span id="sound-icon">🔇</span>
+        <span id="sound-label">Play Sound</span>
+    </button>
+
+    <!-- WhatsApp -->
+    <div class="wa-pulse"></div>
+    <a class="whatsapp-btn" href="https://wa.me/971526923177" target="_blank" rel="noopener"
+        aria-label="WhatsApp Enquiry">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="#25D366" />
+            <path
+                d="M22.9 9.07A9.78 9.78 0 0 0 16.04 6C10.52 6 6.04 10.48 6.04 16a9.94 9.94 0 0 0 1.33 4.97L6 26l5.18-1.36A9.9 9.9 0 0 0 16.04 26c5.52 0 10-4.48 10-10a9.95 9.95 0 0 0-3.14-6.93zm-6.86 15.38a8.27 8.27 0 0 1-4.22-1.16l-.3-.18-3.08.81.82-3-.2-.31a8.28 8.28 0 0 1-1.27-4.41c0-4.58 3.73-8.3 8.31-8.3a8.3 8.3 0 0 1 8.3 8.3c-.01 4.58-3.73 8.25-8.36 8.25zm4.56-6.2c-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13s-.64.81-.79.97c-.14.16-.29.18-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.44-.06-.13-.56-1.34-.76-1.83-.2-.48-.4-.42-.56-.43h-.47c-.16 0-.43.06-.66.31-.22.25-.86.84-.86 2.05s.88 2.38 1.01 2.55c.13.16 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.17-.06-.11-.22-.17-.47-.29z"
+                fill="white" />
+        </svg>
+        +971 52 692 3177
+    </a>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <div class="nav-logo-wrap">
+            <div class="nav-brand">SachiSa</div>
+            <div class="nav-sub">Aqua Alkaline</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#stages">8 Stages</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#pricing" class="nav-cta">Get Pure Water</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div>
+            <div class="hero-tag"><span class="live-dot"></span>UAE's #1 Brand in Water Purifiers</div>
+            <h1>Your Family's<br />Health &amp; Safety<br /><span class="accent">Deserve the Best</span></h1>
+            <p class="hero-desc">SachiSa Aqua Alkaline Water Purifier — combining world-class Reverse Osmosis with
+                advanced South Korean Biocera technology to deliver pure, mineral-rich water right in your home.</p>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <div class="feat-icon-wrap">🇺🇸</div> Premium US Membrane Technology
+                </div>
+                <div class="hero-feature">
+                    <div class="feat-icon-wrap">🇰🇷</div> South Korean Biocera Alkaline Technology
+                </div>
+                <div class="hero-feature">
+                    <div class="feat-icon-wrap">🔬</div> 8-Stage Advanced Purification Process
+                </div>
+            </div>
+            <div class="hero-actions">
+                <a href="#pricing" class="btn-sky">💧 Get Pure Water — AED 1,499</a>
+                <a href="#technology" class="btn-outline">Learn More →</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="product-hero-img-wrap">
+                <div class="product-glow"></div>
+                <img src="sachisa_product.png" alt="SachiSa Aqua Alkaline Water Purifier" class="product-hero-img" />
+                <div class="product-badge-float">🏆 UAE's #1</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT SHOWCASE -->
+    <section id="product" class="product-showcase">
+        <div class="container">
+            <div class="ps-grid">
+                <div class="ps-image-col reveal-left">
+                    <div class="ps-img-frame">
+                        <div class="ps-glow-ring"></div>
+                        <img src="sachisa_product.png" alt="SachiSa Aqua Alkaline Purifier — full product view"
+                            class="ps-img" />
+                        <div class="ps-label">
+                            <span class="ps-label-dot"></span>
+                            SachiSa Aqua Alkaline (RO + Alkaline)
+                        </div>
+                    </div>
+                </div>
+                <div class="ps-info-col reveal-right">
+                    <p class="section-eyebrow">The Product</p>
+                    <h2 class="section-heading">Meet the SachiSa<br />Aqua Alkaline Purifier</h2>
+                    <p style="color:var(--text-muted);font-size:17px;line-height:1.75;margin-bottom:28px">
+                        Engineered with precision and styled for the modern home — the SachiSa Aqua Alkaline RO purifier
+                        brings together US membrane technology and South Korean Biocera alkaline filtration in one
+                        sleek, compact unit.
+                    </p>
+                    <div class="ps-specs">
+                        <div class="ps-spec">
+                            <div class="ps-spec-icon">💧</div>
+                            <div>
+                                <div class="ps-spec-label">Filter Stages</div>
+                                <div class="ps-spec-val">8 Advanced Stages</div>
+                            </div>
+                        </div>
+                        <div class="ps-spec">
+                            <div class="ps-spec-icon">🔬</div>
+                            <div>
+                                <div class="ps-spec-label">Membrane</div>
+                                <div class="ps-spec-val">0.0001 Mic TFC RO (US)</div>
+                            </div>
+                        </div>
+                        <div class="ps-spec">
+                            <div class="ps-spec-icon">⚗️</div>
+                            <div>
+                                <div class="ps-spec-label">Alkaline Tech</div>
+                                <div class="ps-spec-val">South Korean Biocera</div>
+                            </div>
+                        </div>
+                        <div class="ps-spec">
+                            <div class="ps-spec-icon">🛡️</div>
+                            <div>
+                                <div class="ps-spec-label">Warranty</div>
+                                <div class="ps-spec-val">1-Year Full Coverage</div>
+                            </div>
+                        </div>
+                        <div class="ps-spec">
+                            <div class="ps-spec-icon">⭐</div>
+                            <div>
+                                <div class="ps-spec-label">Price</div>
+                                <div class="ps-spec-val">AED 1,499 (all-inclusive)</div>
+                            </div>
+                        </div>
+                        <div class="ps-spec">
+                            <div class="ps-spec-icon">🇦🇪</div>
+                            <div>
+                                <div class="ps-spec-label">Brand Rank</div>
+                                <div class="ps-spec-val">UAE's #1 Water Purifier Brand</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/971526923177" class="btn-sky"
+                        style="margin-top:32px;display:inline-flex;align-items:center;gap:10px" target="_blank">
+                        💬 Enquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIOCERA / TECHNOLOGY -->
+    <section id="technology" class="alt-bg">
+        <div class="container">
+            <div class="reveal">
+                <p class="section-eyebrow">Technology</p>
+                <h2 class="section-heading">Taste Pure with Biocera in SachiSa</h2>
+                <p class="section-sub">The revolutionary Biocera technology transforms ordinary RO water into something
+                    extraordinary.</p>
+            </div>
+            <div class="biocera-grid">
+                <div class="biocera-text reveal-left">
+                    <p>Most water purifiers are built with <strong>Reverse Osmosis (RO) systems</strong>, which
+                        effectively remove microorganisms and harmful substances such as lead, arsenic, and other toxic
+                        metals. They are also cost-effective and easy to operate.</p>
+                    <p>However, RO treatment also removes <strong>beneficial minerals</strong>, resulting in slightly
+                        acidic water. This is where SachiSa's Biocera technology makes a critical difference.</p>
+                    <p><strong>Biocera adds these essential minerals</strong>, transforming acidic demineralized water
+                        into pH-balanced spring water right at your own home.</p>
+                    <div class="biocera-highlight">
+                        <h4>🌟 The Final Result</h4>
+                        <p>Healthier, tastier purified water similar to the miracle spring waters of the <strong
+                                style="color:var(--text-dark)">Zamzam Well, Lourdes and Tibet</strong>.</p>
+                    </div>
+                </div>
+                <div class="reveal-right">
+                    <div class="compare-table">
+                        <div class="compare-row compare-header">
+                            <div class="compare-cell label">Feature</div>
+                            <div class="compare-cell">Regular RO</div>
+                            <div class="compare-cell" style="color:var(--sky-700)">SachiSa</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell label">Remove contaminants</div>
+                            <div class="compare-cell good">✓ Yes</div>
+                            <div class="compare-cell good">✓ Yes</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell label">Retain minerals</div>
+                            <div class="compare-cell bad">✗ No</div>
+                            <div class="compare-cell good">✓ Yes</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell label">pH Balanced</div>
+                            <div class="compare-cell bad">✗ Acidic</div>
+                            <div class="compare-cell good">✓ Alkaline</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell label">Biocera Technology</div>
+                            <div class="compare-cell bad">✗ No</div>
+                            <div class="compare-cell good">✓ Yes</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell label">Enhanced hydration</div>
+                            <div class="compare-cell bad">✗ Standard</div>
+                            <div class="compare-cell good">✓ Superior</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell label">Korean Alkaline tech.</div>
+                            <div class="compare-cell bad">✗ No</div>
+                            <div class="compare-cell good">✓ Biocera</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 8 STAGES -->
+    <section id="stages">
+        <div class="container">
+            <div class="reveal" style="text-align:center">
+                <p class="section-eyebrow">Purification Process</p>
+                <h2 class="section-heading">8 Reasons to Switch to SachiSa Aqua Alkaline</h2>
+                <p class="section-sub" style="margin:0 auto">Our advanced purification process consists of 8
+                    scientifically-engineered stages for the purest water possible.</p>
+            </div>
+            <div style="margin-top:52px">
+                <div class="stage-row reveal">
+                    <div class="stage-col">
+                        <div class="stage-circle">1</div>
+                    </div>
+                    <div class="stage-body">
+                        <div class="stage-tag">Pre-Treatment</div>
+                        <h4>5 Mic Pre-Filter</h4>
+                        <p>First line of defense — removes large sediments, dirt, rust and particles above 5 microns.
+                        </p>
+                    </div>
+                </div>
+                <div class="stage-row reveal" style="transition-delay:0.05s">
+                    <div class="stage-col">
+                        <div class="stage-circle">2</div>
+                    </div>
+                    <div class="stage-body">
+                        <div class="stage-tag">Carbon</div>
+                        <h4>Activated Carbon Filter</h4>
+                        <p>Removes chlorine, chloramines, bad tastes and odors that affect water quality.</p>
+                    </div>
+                </div>
+                <div class="stage-row reveal" style="transition-delay:0.1s">
+                    <div class="stage-col">
+                        <div class="stage-circle">3</div>
+                    </div>
+                    <div class="stage-body">
+                        <div class="stage-tag">Carbon Block</div>
+                        <h4>Activated Carbon Block Filter</h4>
+                        <p>Fine carbon filtration removing volatile organic compounds and residual chlorine.</p>
+                    </div>
+                </div>
+                <div class="stage-row reveal" style="transition-delay:0.15s">
+                    <div class="stage-col">
+                        <div class="stage-circle">4</div>
+                    </div>
+                    <div class="stage-body">
+                        <div class="stage-tag">Core Technology</div>
+                        <h4>0.0001 Mic TFC RO Membrane</h4>
+                        <p>Premium US membrane that filters at the nanometer level, removing 99% of contaminants
+                            including lead and arsenic.</p>
+                    </div>
+                </div>
+                <div class="stage-row reveal" style="transition-delay:0.2s">
+                    <div class="stage-col">
+                        <div class="stage-circle">5</div>
+                    </div>
+                    <div class="stage-body">
+                        <div class="stage-tag">Post Treatment</div>
+                        <h4>Post Carbon Filter</h4>
+                        <p>Final polishing stage that removes any remaining taste or odor for perfectly clean water.</p>
+                    </div>
+                </div>
+                <div class="stage-row reveal" style="transition-delay:0.25s">
+                    <div class="stage-col">
+                        <div class="stage-circle">6</div>
+                    </div>
+                    <div class="stage-body">
+                        <div class="stage-tag">Anti-Oxidant</div>
+                        <h4>Anti-Oxidant Stage</h4>
+                        <p>Adds antioxidant properties to the water, helping neutralize free radicals in the body.</p>
+                    </div>
+                </div>
+                <div class="stage-row reveal" style="transition-delay:0.3s">
+                    <div class="stage-col">
+                        <div class="stage-circle">7</div>
+                    </div>
+                    <div class="stage-body">
+                        <div class="stage-tag">Antibacterial</div>
+                        <h4>Anti-Bacterial Filter</h4>
+                        <p>Additional layer of protection against any surviving bacteria or microorganisms.</p>
+                    </div>
+                </div>
+                <div class="stage-row reveal" style="transition-delay:0.35s">
+                    <div class="stage-col">
+                        <div class="stage-circle">8</div>
+                    </div>
+                    <div class="stage-body">
+                        <div class="stage-tag">Biocera · Alkaline</div>
+                        <h4>Ultra Filtration Membrane + Alkaline Filter</h4>
+                        <p>Signature Biocera Korean alkaline filter restores essential minerals and balances pH —
+                            transforming pure water into healthy alkaline spring water.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MIRACLE BANNER -->
+    <section class="miracle-section">
+        <div class="container">
+            <div style="text-align:center;max-width:760px;margin:0 auto" class="reveal">
+                <p class="section-eyebrow" style="text-align:center">Inspired By Nature's Best</p>
+                <h2 class="section-heading" style="text-align:center">Water Like Nature's Greatest Springs</h2>
+                <p class="section-sub" style="margin:0 auto;text-align:center">The alkaline water produced by SachiSa is
+                    comparable to the most celebrated healing waters in the world.</p>
+                <div class="miracle-icons">
+                    <div class="miracle-item">
+                        <div class="m-icon">🕌</div>
+                        <div class="m-label">Zamzam Well</div>
+                    </div>
+                    <div class="miracle-item">
+                        <div class="m-icon">⛪</div>
+                        <div class="m-label">Lourdes, France</div>
+                    </div>
+                    <div class="miracle-item">
+                        <div class="m-icon">🏔️</div>
+                        <div class="m-label">Tibet Springs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- BENEFITS -->
+    <section id="benefits" class="alt-bg">
+        <div class="container">
+            <div class="reveal" style="text-align:center">
+                <p class="section-eyebrow">Health Benefits</p>
+                <h2 class="section-heading">Live Pure with SachiSa Aqua Alkaline</h2>
+                <p class="section-sub" style="margin:0 auto">Start enjoying these powerful health benefits with every
+                    glass of our premium alkaline water.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card reveal" style="transition-delay:0.05s">
+                    <div class="b-icon">⚡</div>
+                    <h4>Hydrates Faster</h4>
+                    <p>Alkaline molecules are smaller and more readily absorbed, hydrating your cells faster than
+                        regular water.</p>
+                </div>
+                <div class="benefit-card reveal" style="transition-delay:0.1s">
+                    <div class="b-icon">🔋</div>
+                    <h4>Boosts Energy &amp; Vitality</h4>
+                    <p>Essential minerals and alkaline pH help maintain energy levels and improve day-to-day vitality.
+                    </p>
+                </div>
+                <div class="benefit-card reveal" style="transition-delay:0.15s">
+                    <div class="b-icon">💎</div>
+                    <h4>Smoother, Refreshing Taste</h4>
+                    <p>Delivers a silky-smooth taste that feels lighter and more refreshing than ordinary filtered
+                        water.</p>
+                </div>
+                <div class="benefit-card reveal" style="transition-delay:0.2s">
+                    <div class="b-icon">🌿</div>
+                    <h4>Rich in Essential Minerals</h4>
+                    <p>Biocera restores calcium, magnesium, potassium and other vital minerals your body needs daily.
+                    </p>
+                </div>
+                <div class="benefit-card reveal" style="transition-delay:0.25s">
+                    <div class="b-icon">🌊</div>
+                    <h4>Flushes Toxins Faster</h4>
+                    <p>Alkaline water supports the body's natural detoxification, helping flush toxins more effectively.
+                    </p>
+                </div>
+                <div class="benefit-card reveal" style="transition-delay:0.3s">
+                    <div class="b-icon">🧠</div>
+                    <h4>Mental Clarity &amp; Focus</h4>
+                    <p>Proper hydration with mineral-rich alkaline water enhances cognitive function and sharp focus.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PRICING -->
+    <section id="pricing">
+        <div class="container">
+            <div class="reveal" style="text-align:center">
+                <p class="section-eyebrow">Pricing</p>
+                <h2 class="section-heading">Pure Living for Less</h2>
+                <p class="section-sub" style="margin:0 auto">Everything you need. One complete package. No surprises.
+                </p>
+            </div>
+            <div class="pricing-wrapper">
+                <div class="price-card featured reveal">
+                    <div class="featured-badge">⭐ Best Value</div>
+                    <h3>SachiSa Aqua Alkaline</h3>
+                    <div class="big-price"><sup>AED</sup> 1,499</div>
+                    <div class="price-desc">One-time · All inclusive · No hidden costs</div>
+                    <ul class="includes-list">
+                        <li><span class="check-good">✓</span> Complete SachiSa Aqua Alkaline Unit</li>
+                        <li><span class="check-good">✓</span> Professional Supply &amp; Installation</li>
+                        <li><span class="check-good">✓</span> 1-Year Full Warranty</li>
+                        <li><span class="check-good">✓</span> After-sales service &amp; support</li>
+                        <li><span class="check-good">✓</span> US TFC 0.0001 Mic RO Membrane</li>
+                        <li><span class="check-good">✓</span> South Korean Biocera Alkaline Filter</li>
+                        <li><span class="check-good">✓</span> 8-Stage Advanced Purification</li>
+                    </ul>
+                    <a href="https://wa.me/971526923177" class="btn-sky"
+                        style="width:100%;justify-content:center;margin-top:24px" target="_blank">
+                        💬 WhatsApp Enquiry
+                    </a>
+                </div>
+                <div class="price-card reveal" style="transition-delay:0.1s">
+                    <h3>Why SachiSa?</h3>
+                    <p style="font-size:15px;color:var(--text-muted);line-height:1.75;margin-top:16px">As the UAE's #1
+                        brand in water purifiers, SachiSa has been trusted by thousands of families across Dubai and the
+                        UAE. Our commitment to purity and technology is unmatched in the region.</p>
+                    <div style="margin-top:28px;display:flex;flex-direction:column;gap:16px">
+                        <div style="display:flex;gap:14px;align-items:center">
+                            <div
+                                style="width:44px;height:44px;border-radius:12px;background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">
+                                🏆</div>
+                            <div>
+                                <div style="font-weight:700;font-size:15px;color:var(--text-dark)">UAE's #1 Trusted
+                                    Brand</div>
+                                <div style="color:var(--text-muted);font-size:13px">Thousands of satisfied families
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:14px;align-items:center">
+                            <div
+                                style="width:44px;height:44px;border-radius:12px;background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">
+                                🌍</div>
+                            <div>
+                                <div style="font-weight:700;font-size:15px;color:var(--text-dark)">World-Class
+                                    Technology</div>
+                                <div style="color:var(--text-muted);font-size:13px">US membrane + Korean Biocera</div>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:14px;align-items:center">
+                            <div
+                                style="width:44px;height:44px;border-radius:12px;background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">
+                                🛡️</div>
+                            <div>
+                                <div style="font-weight:700;font-size:15px;color:var(--text-dark)">Full 1-Year Warranty
+                                </div>
+                                <div style="color:var(--text-muted);font-size:13px">Including supply &amp; installation
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
+    <section id="contact" class="alt-bg">
+        <div class="container">
+            <div class="reveal">
+                <p class="section-eyebrow">Contact Us</p>
+                <h2 class="section-heading">Ready for Pure, Healthy Water?</h2>
+                <p class="section-sub">Our team is ready to bring the power of SachiSa Aqua Alkaline to your home. Get
+                    in touch today.</p>
+            </div>
+            <div class="contact-layout">
+                <div class="reveal-left">
+                    <ul class="ci-list">
+                        <li class="ci-item">
+                            <div class="ci-icon">📞</div>
+                            <div>
+                                <div class="ci-label">Phone</div>
+                                <div class="ci-value">04 220 5788</div>
+                                <div class="ci-sub">+971 52 692 3177</div>
+                            </div>
+                        </li>
+                        <li class="ci-item">
+                            <div class="ci-icon">🌐</div>
+                            <div>
+                                <div class="ci-label">Website</div>
+                                <div class="ci-value">www.sachisa.com</div>
+                                <div class="ci-sub">Visit us online for more info</div>
+                            </div>
+                        </li>
+                        <li class="ci-item">
+                            <div class="ci-icon">📍</div>
+                            <div>
+                                <div class="ci-label">Location</div>
+                                <div class="ci-value">Al Qusais Industrial Area 1</div>
+                                <div class="ci-sub">Warehouse No. 4, Lootah WH, Dubai, UAE</div>
+                            </div>
+                        </li>
+                        <li class="ci-item">
+                            <div class="ci-icon">🏢</div>
+                            <div>
+                                <div class="ci-label">Company</div>
+                                <div class="ci-value">Waterlife Technology LLC</div>
+                                <div class="ci-sub">A Retail Division of Axon Filters Technology LLC</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="reveal-right">
+                    <div class="brand-card">
+                        <h3>Why Your Family Deserves SachiSa</h3>
+                        <p>Water is the foundation of life. The quality of water your family drinks directly impacts
+                            your health, energy, and long-term wellbeing. With SachiSa Aqua Alkaline, we bring the
+                            world's best water purification technology to every home in the UAE.</p>
+                        <p>Our partnership with Biocera — the leading South Korean alkaline technology company — ensures
+                            that every glass of water from your SachiSa purifier is not just clean, but truly
+                            exceptional.</p>
+                        <div class="brand-tag">💧 Think Pure. Drink Pure. Live Pure.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo-wrap">
+                <div class="footer-brand">SachiSa</div>
+                <div class="footer-tagline">Aqua Alkaline Water Purifier</div>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#stages">8 Stages</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            Waterlife Technology LLC · A Retail Division of Axon Filters Technology LLC<br />
+            Warehouse No. 4, Lootah WH, Al Qusais Industrial Area 1, Dubai, UAE<br />
+            <span style="opacity:0.5">© 2025 SachiSa / Waterlife Technology LLC. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script>
+        // ── PARTICLE CANVAS ──
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let W = canvas.width = window.innerWidth;
+        let H = canvas.height = window.innerHeight;
+
+        const particles = Array.from({ length: 70 }, () => ({
+            x: Math.random() * W, y: Math.random() * H,
+            r: Math.random() * 2 + 0.5,
+            vx: (Math.random() - 0.5) * 0.38, vy: (Math.random() - 0.5) * 0.38,
+            alpha: Math.random() * 0.35 + 0.08,
+        }));
+
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+            particles.forEach((p, i) => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0) p.x = W; if (p.x > W) p.x = 0; if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(14,165,233,${p.alpha})`; ctx.fill();
+                particles.slice(i + 1).forEach(q => {
+                    const d = Math.hypot(p.x - q.x, p.y - q.y);
+                    if (d < 130) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.strokeStyle = `rgba(14,165,233,${0.06 * (1 - d / 130)})`; ctx.lineWidth = 0.5; ctx.stroke(); }
+                });
+            });
+            requestAnimationFrame(draw);
+        }
+        draw();
+        window.addEventListener('resize', () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; });
+
+        // ── SCROLL REVEAL ──
+        const revEls = document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+        const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }), { threshold: 0.1 });
+        revEls.forEach(el => obs.observe(el));
+
+        // ── NAVBAR SCROLL ──
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').style.background = window.scrollY > 60 ? 'rgba(255,255,255,0.97)' : 'rgba(255,255,255,0.78)';
+        });
+
+        // ── TILT ──
+        document.querySelectorAll('.benefit-card,.price-card,.brand-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const r = card.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+                card.style.transform = `perspective(700px) rotateX(${-y * 7}deg) rotateY(${x * 7}deg) translateY(-6px)`;
+            });
+            card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+        });
+
+        // ── SMOOTH SCROLL ──
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth' }); });
+        });
+
+        // ── WATER SOUND ──
+        const audio = document.getElementById('water-audio');
+        audio.volume = 0.3;
+        let soundOn = false;
+
+        function toggleSound() {
+            soundOn = !soundOn;
+            if (soundOn) {
+                audio.play().catch(() => { });
+                document.getElementById('sound-icon').textContent = '🔊';
+                document.getElementById('sound-label').textContent = 'Sound On';
+            } else {
+                audio.pause();
+                document.getElementById('sound-icon').textContent = '🔇';
+                document.getElementById('sound-label').textContent = 'Play Sound';
+            }
+        }
+
+        // Auto-play on first click
+        let autoPlayed = false;
+        document.addEventListener('click', () => {
+            if (!autoPlayed) { autoPlayed = true; toggleSound(); }
+        }, { once: true });
+    </script>
+</body>
+
+</html>
