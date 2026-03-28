@@ -618,45 +618,66 @@
       border-bottom: 1px solid var(--glass-border);
     }
 
-    /* ── CIRCULAR STAGES MENU ── */
+    /* ── 3D CIRCULAR STAGES MENU ── */
     .circ-wrap {
       position: relative;
       width: 520px;
       height: 520px;
       margin: 52px auto 0;
+      perspective: 1200px;
+    }
+
+    .circ-inner {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .circ-ring {
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 2px dashed rgba(14, 165, 233, 0.18);
-      transition: transform 0.55s cubic-bezier(.4, 0, .2, 1);
+      border: 3px dashed rgba(14, 165, 233, 0.3);
     }
 
     .circ-center {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) translateZ(80px);
       width: 170px;
       height: 170px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--sky-500), var(--blue-600));
-      box-shadow: 0 8px 40px rgba(14, 165, 233, 0.35);
+      box-shadow: 0 15px 45px rgba(14, 165, 233, 0.45), inset 0 4px 15px rgba(255, 255, 255, 0.3);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      z-index: 5;
+      z-index: 10;
       padding: 16px;
       transition: all 0.35s ease;
+    }
+
+    .circ-center::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 10%;
+      width: 80%;
+      height: 20px;
+      background: rgba(0, 0, 0, 0.15);
+      filter: blur(10px);
+      border-radius: 50%;
+      z-index: -1;
     }
 
     .circ-center-icon {
       font-size: 36px;
       line-height: 1;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
     }
 
     .circ-center-num {
@@ -682,6 +703,60 @@
       margin-top: 6px;
       line-height: 1.4;
       max-width: 130px;
+    }
+
+    .circ-node {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 3px solid rgba(14, 165, 233, 0.3);
+      box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2), inset 0 2px 8px #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s, border-color 0.3s, box-shadow 0.3s;
+      z-index: 6;
+      transform-style: preserve-3d;
+    }
+
+    .circ-node:hover {
+      border-color: rgba(14, 165, 233, 0.7);
+      box-shadow: 0 15px 35px rgba(14, 165, 233, 0.4);
+    }
+
+    .circ-node.active {
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-color: var(--sky-500);
+      box-shadow: 0 0 0 5px rgba(14, 165, 233, 0.3), 0 15px 35px rgba(14, 165, 233, 0.5);
+    }
+
+    .circ-node-icon {
+      font-size: 26px;
+      line-height: 1;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+    }
+
+    .circ-node-num {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--sky-700);
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .circ-connector {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(14, 165, 233, 0.5), transparent);
+      transform-origin: left center;
+      z-index: 4;
     }
 
     .circ-node {
@@ -1405,53 +1480,55 @@
         <p class="section-sub" style="margin:0 auto">Our advanced 7-stage purification process removes every category of
           contaminant for the purest water possible.</p>
       </div>
-      <!-- CIRCULAR STAGES MENU -->
+      <!-- 3D CIRCULAR STAGES MENU -->
       <div class="circ-wrap" id="axtron-circ">
-        <div class="circ-ring" id="axtron-ring"></div>
-        <!-- connector lines -->
-        <div class="circ-connector" id="ac0"></div>
-        <div class="circ-connector" id="ac1"></div>
-        <div class="circ-connector" id="ac2"></div>
-        <div class="circ-connector" id="ac3"></div>
-        <div class="circ-connector" id="ac4"></div>
-        <div class="circ-connector" id="ac5"></div>
-        <div class="circ-connector" id="ac6"></div>
-        <!-- center -->
+        <div class="circ-inner" id="axtron-inner">
+          <div class="circ-ring"></div>
+          <!-- connector lines -->
+          <div class="circ-connector" id="ac0"></div>
+          <div class="circ-connector" id="ac1"></div>
+          <div class="circ-connector" id="ac2"></div>
+          <div class="circ-connector" id="ac3"></div>
+          <div class="circ-connector" id="ac4"></div>
+          <div class="circ-connector" id="ac5"></div>
+          <div class="circ-connector" id="ac6"></div>
+          <!-- nodes -->
+          <div class="circ-node active" data-idx="0" onclick="axSelectStage(0); axUserAction()">
+            <div class="circ-node-icon">🔵</div>
+            <div class="circ-node-num">01</div>
+          </div>
+          <div class="circ-node" data-idx="1" onclick="axSelectStage(1); axUserAction()">
+            <div class="circ-node-icon">🌑</div>
+            <div class="circ-node-num">02</div>
+          </div>
+          <div class="circ-node" data-idx="2" onclick="axSelectStage(2); axUserAction()">
+            <div class="circ-node-icon">⬛</div>
+            <div class="circ-node-num">03</div>
+          </div>
+          <div class="circ-node" data-idx="3" onclick="axSelectStage(3); axUserAction()">
+            <div class="circ-node-icon">🔬</div>
+            <div class="circ-node-num">04</div>
+          </div>
+          <div class="circ-node" data-idx="4" onclick="axSelectStage(4); axUserAction()">
+            <div class="circ-node-icon">♻️</div>
+            <div class="circ-node-num">05</div>
+          </div>
+          <div class="circ-node" data-idx="5" onclick="axSelectStage(5); axUserAction()">
+            <div class="circ-node-icon">⚗️</div>
+            <div class="circ-node-num">06</div>
+          </div>
+          <div class="circ-node" data-idx="6" onclick="axSelectStage(6); axUserAction()">
+            <div class="circ-node-icon">🛡️</div>
+            <div class="circ-node-num">07</div>
+          </div>
+        </div>
+        <!-- center placed outside inner so it pops straight up -->
         <div class="circ-center" id="axtron-center">
           <div class="circ-center-icon" id="a-ci">🔵</div>
           <div class="circ-center-num" id="a-cn">Stage 01</div>
           <div class="circ-center-name" id="a-cm">5 Mic Pre-Filter</div>
           <div class="circ-center-desc" id="a-cd">First defense — removes sediments &amp; particles above 5 microns.
           </div>
-        </div>
-        <!-- nodes -->
-        <div class="circ-node active" data-idx="0" onclick="axSelectStage(0)">
-          <div class="circ-node-icon">🔵</div>
-          <div class="circ-node-num">01</div>
-        </div>
-        <div class="circ-node" data-idx="1" onclick="axSelectStage(1)">
-          <div class="circ-node-icon">🌑</div>
-          <div class="circ-node-num">02</div>
-        </div>
-        <div class="circ-node" data-idx="2" onclick="axSelectStage(2)">
-          <div class="circ-node-icon">⬛</div>
-          <div class="circ-node-num">03</div>
-        </div>
-        <div class="circ-node" data-idx="3" onclick="axSelectStage(3)">
-          <div class="circ-node-icon">🔬</div>
-          <div class="circ-node-num">04</div>
-        </div>
-        <div class="circ-node" data-idx="4" onclick="axSelectStage(4)">
-          <div class="circ-node-icon">♻️</div>
-          <div class="circ-node-num">05</div>
-        </div>
-        <div class="circ-node" data-idx="5" onclick="axSelectStage(5)">
-          <div class="circ-node-icon">⚗️</div>
-          <div class="circ-node-num">06</div>
-        </div>
-        <div class="circ-node" data-idx="6" onclick="axSelectStage(6)">
-          <div class="circ-node-icon">🛡️</div>
-          <div class="circ-node-num">07</div>
         </div>
       </div>
     </div>
@@ -1758,7 +1835,7 @@
       if (!autoPlayed) { autoPlayed = true; toggleSound(); }
     }, { once: true });
 
-    // ── CIRCULAR STAGES MENU (AXTRON) ──
+    // ── 3D CIRCULAR STAGES MENU (AXTRON) ──
     const axStages = [
       { i: "🔵", n: "Stage 01", m: "5 Mic Pre-Filter", d: "First defense — removes sediments & particles above 5 microns." },
       { i: "🌑", n: "Stage 02", m: "Activated Carbon Filter", d: "Absorbs chlorine, odors, and organic compounds for better taste." },
@@ -1769,23 +1846,20 @@
       { i: "🛡️", n: "Stage 07", m: "Anti-Bacterial Filter", d: "Final safeguard eliminating any remaining microorganisms to ensure 100% purity." }
     ];
     const axNodes = document.querySelectorAll('#axtron-circ .circ-node');
-    const axRing = document.getElementById('axtron-ring');
+    const axInner = document.getElementById('axtron-inner');
     const axCenter = document.getElementById('axtron-center');
-    const radius = 260; // Half of 520px
+    const axTotal = axNodes.length;
+    const axRadius = 260; // Half of 520px
     const cx = 260, cy = 260;
 
     function axLayout() {
-      const total = axNodes.length;
       axNodes.forEach((node, i) => {
-        // -90deg so 0 is at Top
-        const angle = (i * (360 / total) - 90) * (Math.PI / 180);
-        const nx = cx + radius * Math.cos(angle);
-        const ny = cy + radius * Math.sin(angle);
-        // Node size is 80x80, offset by 40
+        const angle = (i * (360 / axTotal) - 90) * (Math.PI / 180);
+        const nx = cx + axRadius * Math.cos(angle);
+        const ny = cy + axRadius * Math.sin(angle);
         node.style.left = (nx - 40) + 'px';
         node.style.top = (ny - 40) + 'px';
 
-        // Connector lines
         const conn = document.getElementById('ac' + i);
         if (conn) {
           const dx = nx - cx;
@@ -1799,29 +1873,46 @@
     }
     axLayout();
 
-    window.axSelectStage = function (idx) {
-      axNodes.forEach(n => n.classList.remove('active'));
-      const activeNode = document.querySelector(`.circ-node[data-idx="${idx}"]`);
-      if (activeNode) activeNode.classList.add('active');
+    let axCurrentIdx = 0;
+    let axCumulativeRotZ = 180; // Start with idx 0 at the bottom (nearest user)
 
-      // Update center
+    window.axSelectStage = function (idx) {
+      let diff = idx - axCurrentIdx;
+      if (diff > axTotal / 2) diff -= axTotal;
+      if (diff < -axTotal / 2) diff += axTotal;
+
+      axCurrentIdx = idx;
+      axCumulativeRotZ -= diff * (360 / axTotal);
+
+      // Apply 3D rotation to inner ring (tilt 60deg X + calculated Z rotation)
+      axInner.style.transform = `rotateX(60deg) rotateZ(${axCumulativeRotZ}deg)`;
+
+      // Apply counter-rotation to nodes so they stay upright facing camera
+      axNodes.forEach((node) => {
+        node.classList.remove('active');
+        if (parseInt(node.dataset.idx) === idx) node.classList.add('active');
+        node.style.transform = `rotateZ(${-axCumulativeRotZ}deg) rotateX(-60deg)`;
+      });
+
+      // Update Center Content
       const data = axStages[idx];
-      axCenter.style.transform = 'translate(-50%,-50%) scale(0.9)';
+      axCenter.style.transform = 'translate(-50%,-50%) translateZ(60px) scale(0.9)';
       axCenter.style.opacity = '0';
       setTimeout(() => {
         document.getElementById('a-ci').textContent = data.i;
         document.getElementById('a-cn').textContent = data.n;
         document.getElementById('a-cm').textContent = data.m;
         document.getElementById('a-cd').textContent = data.d;
-        axCenter.style.transform = 'translate(-50%,-50%) scale(1)';
+        axCenter.style.transform = 'translate(-50%,-50%) translateZ(80px) scale(1)';
         axCenter.style.opacity = '1';
       }, 150);
-
-      // Rotate ring so selected node is at top (0 angle)
-      // Node idx has angle (idx * 360/7). To put at top (-90), rotate by - (idx * 360/7)
-      const rot = -(idx * (360 / axNodes.length));
-      axRing.style.transform = `rotate(${rot}deg)`;
     };
+
+    axSelectStage(0);
+
+    // Auto-spin logic
+    let axAutoTimer = setInterval(() => { axSelectStage((axCurrentIdx + 1) % axTotal); }, 3500);
+    window.axUserAction = function () { clearInterval(axAutoTimer); };
   </script>
 </body>
 
