@@ -1116,9 +1116,8 @@
   <canvas id="bg-canvas"></canvas>
 
   <!-- Water Sound -->
-  <audio id="water-audio" loop>
-    <source src="https://www.soundjay.com/nature/sounds/water-stream-1.mp3" type="audio/mpeg">
-    <source src="https://assets.mixkit.co/sfx/preview/mixkit-river-flowing-quickly-2326.mp3" type="audio/mpeg">
+  <audio id="water-audio">
+    <source src="water_sound.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Sound Toggle -->
@@ -1559,33 +1558,53 @@
       });
     });
 
-    // ── WATER SOUND ──
+    // ── WATER SOUND (random interval: 10–30s) ──
     const audio = document.getElementById('water-audio');
-    audio.volume = 0.3;
+    audio.volume = 0.35;
     let soundOn = false;
+    let soundTimer = null;
+
+    function randomDelay() {
+      // Random wait between 10 000ms and 30 000ms
+      return Math.floor(Math.random() * 20000) + 10000;
+    }
+
+    function scheduleNextPlay() {
+      if (!soundOn) return;
+      const delay = randomDelay();
+      soundTimer = setTimeout(() => {
+        if (!soundOn) return;
+        audio.currentTime = 0;
+        audio.play().catch(() => { });
+        // After the clip ends, schedule the next play
+        audio.onended = () => scheduleNextPlay();
+      }, delay);
+    }
 
     function toggleSound() {
       soundOn = !soundOn;
       const icon = document.getElementById('sound-icon');
       const label = document.getElementById('sound-label');
       if (soundOn) {
-        audio.play().catch(() => { });
         icon.textContent = '🔊';
         label.textContent = 'Sound On';
+        // Play immediately first time, then random intervals
+        audio.currentTime = 0;
+        audio.play().catch(() => { });
+        audio.onended = () => scheduleNextPlay();
       } else {
+        clearTimeout(soundTimer);
         audio.pause();
+        audio.onended = null;
         icon.textContent = '🔇';
         label.textContent = 'Play Sound';
       }
     }
 
-    // Auto-play on first user interaction
+    // Auto-start on first user interaction
     let autoPlayed = false;
     document.addEventListener('click', () => {
-      if (!autoPlayed) {
-        autoPlayed = true;
-        toggleSound();
-      }
+      if (!autoPlayed) { autoPlayed = true; toggleSound(); }
     }, { once: true });
   </script>
 </body>

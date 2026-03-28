@@ -1433,9 +1433,8 @@
     <canvas id="bg-canvas"></canvas>
 
     <!-- Water Sound -->
-    <audio id="water-audio" loop>
-        <source src="https://www.soundjay.com/nature/sounds/water-stream-1.mp3" type="audio/mpeg">
-        <source src="https://assets.mixkit.co/sfx/preview/mixkit-river-flowing-quickly-2326.mp3" type="audio/mpeg">
+    <audio id="water-audio">
+        <source src="water_sound.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Sound Toggle -->
@@ -2042,25 +2041,44 @@
             a.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth' }); });
         });
 
-        // ── WATER SOUND ──
+        // ── WATER SOUND (random interval: 10–30s) ──
         const audio = document.getElementById('water-audio');
-        audio.volume = 0.3;
+        audio.volume = 0.35;
         let soundOn = false;
+        let soundTimer = null;
+
+        function randomDelay() {
+            return Math.floor(Math.random() * 20000) + 10000; // 10–30 seconds
+        }
+
+        function scheduleNextPlay() {
+            if (!soundOn) return;
+            soundTimer = setTimeout(() => {
+                if (!soundOn) return;
+                audio.currentTime = 0;
+                audio.play().catch(() => { });
+                audio.onended = () => scheduleNextPlay();
+            }, randomDelay());
+        }
 
         function toggleSound() {
             soundOn = !soundOn;
             if (soundOn) {
-                audio.play().catch(() => { });
                 document.getElementById('sound-icon').textContent = '🔊';
                 document.getElementById('sound-label').textContent = 'Sound On';
+                audio.currentTime = 0;
+                audio.play().catch(() => { });
+                audio.onended = () => scheduleNextPlay();
             } else {
+                clearTimeout(soundTimer);
                 audio.pause();
+                audio.onended = null;
                 document.getElementById('sound-icon').textContent = '🔇';
                 document.getElementById('sound-label').textContent = 'Play Sound';
             }
         }
 
-        // Auto-play on first click
+        // Auto-start on first user interaction
         let autoPlayed = false;
         document.addEventListener('click', () => {
             if (!autoPlayed) { autoPlayed = true; toggleSound(); }
