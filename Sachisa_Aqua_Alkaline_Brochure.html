@@ -202,6 +202,29 @@
             box-shadow: 0 8px 30px rgba(14, 165, 233, 0.45);
         }
 
+        .nav-dl-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1.5px solid rgba(14, 165, 233, 0.3);
+            color: var(--sky-700);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(14, 165, 233, 0.12);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .nav-dl-btn:hover {
+            transform: translateY(-2px);
+            background: #fff;
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.25);
+        }
+
         /* ── HERO ── */
         .hero {
             position: relative;
@@ -1101,29 +1124,27 @@
             z-index: 999;
             background: #25D366;
             color: #fff;
-            border-radius: 50px;
-            padding: 14px 22px 14px 16px;
+            border-radius: 50%;
+            width: 58px;
+            height: 58px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
             box-shadow: 0 6px 28px rgba(37, 211, 102, 0.45);
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 700;
             transition: transform 0.3s, box-shadow 0.3s;
             animation: waBounce 2.5s ease-in-out infinite;
         }
 
         .whatsapp-btn:hover {
-            transform: translateY(-4px) scale(1.04);
+            transform: translateY(-4px) scale(1.08);
             box-shadow: 0 12px 40px rgba(37, 211, 102, 0.55);
             animation: none;
         }
 
         .whatsapp-btn svg {
-            width: 26px;
-            height: 26px;
-            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
         }
 
         @keyframes waBounce {
@@ -1334,6 +1355,148 @@
             animation: livePulse 2s infinite;
         }
 
+        /* ── CIRCULAR MENU ── */
+        .circ-wrap {
+            position: relative;
+            width: 520px;
+            height: 520px;
+            margin: 20px auto 0;
+            transform: scale(0.95);
+            transform-origin: left center;
+        }
+
+        @media (max-width: 1200px) {
+            .circ-wrap {
+                transform: scale(0.85);
+                margin: 0 auto;
+                transform-origin: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .circ-wrap {
+                transform: scale(0.65);
+                margin-top: -30px;
+                margin-bottom: -30px;
+            }
+        }
+
+        .circ-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px dashed rgba(14, 165, 233, 0.18);
+            transition: transform 0.55s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .circ-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sky-500), var(--blue-600));
+            box-shadow: 0 8px 40px rgba(14, 165, 233, 0.35);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 5;
+            padding: 20px;
+            transition: all 0.35s ease;
+        }
+
+        .circ-center-icon {
+            font-size: 38px;
+            line-height: 1;
+        }
+
+        .circ-center-num {
+            font-size: 11px;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        .circ-center-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 4px;
+            line-height: 1.2;
+        }
+
+        .circ-center-desc {
+            font-size: 11.5px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 8px;
+            line-height: 1.4;
+            max-width: 140px;
+        }
+
+        .circ-node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(14, 165, 233, 0.2);
+            box-shadow: 0 4px 18px rgba(14, 165, 233, 0.12);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s, background 0.3s;
+            z-index: 6;
+        }
+
+        .circ-node:hover {
+            border-color: rgba(14, 165, 233, 0.5);
+            box-shadow: 0 8px 28px rgba(14, 165, 233, 0.25);
+            transform: scale(1.12);
+        }
+
+        .circ-node.active {
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            border-color: var(--sky-500);
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2), 0 8px 28px rgba(14, 165, 233, 0.3);
+        }
+
+        .circ-node-icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .circ-node-num {
+            font-size: 9px;
+            font-weight: 800;
+            color: var(--sky-600);
+            letter-spacing: 1px;
+            margin-top: 6px;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1.1;
+            display: none;
+        }
+
+        .circ-connector {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(14, 165, 233, 0.35), transparent);
+            transform-origin: left center;
+            z-index: 4;
+        }
+
         .ps-specs {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1453,7 +1616,6 @@
                 d="M22.9 9.07A9.78 9.78 0 0 0 16.04 6C10.52 6 6.04 10.48 6.04 16a9.94 9.94 0 0 0 1.33 4.97L6 26l5.18-1.36A9.9 9.9 0 0 0 16.04 26c5.52 0 10-4.48 10-10a9.95 9.95 0 0 0-3.14-6.93zm-6.86 15.38a8.27 8.27 0 0 1-4.22-1.16l-.3-.18-3.08.81.82-3-.2-.31a8.28 8.28 0 0 1-1.27-4.41c0-4.58 3.73-8.3 8.31-8.3a8.3 8.3 0 0 1 8.3 8.3c-.01 4.58-3.73 8.25-8.36 8.25zm4.56-6.2c-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13s-.64.81-.79.97c-.14.16-.29.18-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.44-.06-.13-.56-1.34-.76-1.83-.2-.48-.4-.42-.56-.43h-.47c-.16 0-.43.06-.66.31-.22.25-.86.84-.86 2.05s.88 2.38 1.01 2.55c.13.16 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.17-.06-.11-.22-.17-.47-.29z"
                 fill="white" />
         </svg>
-        +971 52 692 3177
     </a>
 
     <!-- NAV -->
@@ -1470,6 +1632,15 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
         <a href="#pricing" class="nav-cta">Get Pure Water</a>
+        <a class="nav-dl-btn" href="Sachisa Brochure 2025.pdf" download aria-label="Download Brochure">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round" width="15" height="15">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download PDF
+        </a>
     </nav>
 
     <!-- HERO -->
@@ -1527,48 +1698,41 @@
                         brings together US membrane technology and South Korean Biocera alkaline filtration in one
                         sleek, compact unit.
                     </p>
-                    <div class="ps-specs">
-                        <div class="ps-spec">
-                            <div class="ps-spec-icon">💧</div>
-                            <div>
-                                <div class="ps-spec-label">Filter Stages</div>
-                                <div class="ps-spec-val">8 Advanced Stages</div>
-                            </div>
+                    <!-- CIRCULAR SPECS MENU -->
+                    <div class="circ-wrap" id="sachisa-circ">
+                        <div class="circ-ring" id="sachisa-ring"></div>
+                        <!-- connector lines -->
+                        <div class="circ-connector" id="sc0"></div>
+                        <div class="circ-connector" id="sc1"></div>
+                        <div class="circ-connector" id="sc2"></div>
+                        <div class="circ-connector" id="sc3"></div>
+                        <div class="circ-connector" id="sc4"></div>
+                        <div class="circ-connector" id="sc5"></div>
+                        <!-- center -->
+                        <div class="circ-center" id="sachisa-center">
+                            <div class="circ-center-icon" id="s-ci">💧</div>
+                            <div class="circ-center-num" id="s-cn">Filter Stages</div>
+                            <div class="circ-center-name" id="s-cm">8 Advanced Stages</div>
+                            <div class="circ-center-desc" id="s-cd">Comprehensive 8-stage purification process.</div>
                         </div>
-                        <div class="ps-spec">
-                            <div class="ps-spec-icon">🔬</div>
-                            <div>
-                                <div class="ps-spec-label">Membrane</div>
-                                <div class="ps-spec-val">0.0001 Mic TFC RO (US)</div>
-                            </div>
+                        <!-- nodes -->
+                        <div class="circ-node active" data-idx="0" onclick="saSelectSpec(0)">
+                            <div class="circ-node-icon">💧</div>
                         </div>
-                        <div class="ps-spec">
-                            <div class="ps-spec-icon">⚗️</div>
-                            <div>
-                                <div class="ps-spec-label">Alkaline Tech</div>
-                                <div class="ps-spec-val">South Korean Biocera</div>
-                            </div>
+                        <div class="circ-node" data-idx="1" onclick="saSelectSpec(1)">
+                            <div class="circ-node-icon">🔬</div>
                         </div>
-                        <div class="ps-spec">
-                            <div class="ps-spec-icon">🛡️</div>
-                            <div>
-                                <div class="ps-spec-label">Warranty</div>
-                                <div class="ps-spec-val">1-Year Full Coverage</div>
-                            </div>
+                        <div class="circ-node" data-idx="2" onclick="saSelectSpec(2)">
+                            <div class="circ-node-icon">⚗️</div>
                         </div>
-                        <div class="ps-spec">
-                            <div class="ps-spec-icon">⭐</div>
-                            <div>
-                                <div class="ps-spec-label">Price</div>
-                                <div class="ps-spec-val">AED 1,499 (all-inclusive)</div>
-                            </div>
+                        <div class="circ-node" data-idx="3" onclick="saSelectSpec(3)">
+                            <div class="circ-node-icon">🛡️</div>
                         </div>
-                        <div class="ps-spec">
-                            <div class="ps-spec-icon">🇦🇪</div>
-                            <div>
-                                <div class="ps-spec-label">Brand Rank</div>
-                                <div class="ps-spec-val">UAE's #1 Water Purifier Brand</div>
-                            </div>
+                        <div class="circ-node" data-idx="4" onclick="saSelectSpec(4)">
+                            <div class="circ-node-icon">⭐</div>
+                        </div>
+                        <div class="circ-node" data-idx="5" onclick="saSelectSpec(5)">
+                            <div class="circ-node-icon">🇦🇪</div>
                         </div>
                     </div>
                     <a href="https://wa.me/971526923177" class="btn-sky"
@@ -2083,6 +2247,64 @@
         document.addEventListener('click', () => {
             if (!autoPlayed) { autoPlayed = true; toggleSound(); }
         }, { once: true });
+
+        // ── CIRCULAR MENU (SACHISA SPECS) ──
+        const saSpecs = [
+            { i: "💧", n: "Filter Stages", m: "8 Advanced Stages", d: "Comprehensive 8-stage purification process." },
+            { i: "🔬", n: "Membrane", m: "0.0001 Mic TFC RO", d: "Premium US-made reverse osmosis membrane." },
+            { i: "⚗️", n: "Alkaline Tech", m: "South Korean Biocera", d: "Authentic South Korean Biocera antioxidant alkaline technology." },
+            { i: "🛡️", n: "Warranty", m: "1-Year Coverage", d: "Complete peace of mind with our comprehensive warranty." },
+            { i: "⭐", n: "Price", m: "AED 1,499", d: "Premium purification at an unbeatable all-inclusive price." },
+            { i: "🇦🇪", n: "Brand Rank", m: "UAE's #1 Brand", d: "Trusted by thousands of families across the UAE." }
+        ];
+        const saNodes = document.querySelectorAll('#sachisa-circ .circ-node');
+        const saRing = document.getElementById('sachisa-ring');
+        const saCenter = document.getElementById('sachisa-center');
+        const sRadius = 260;
+        const sCx = 260, sCy = 260;
+
+        function saLayout() {
+            const total = saNodes.length;
+            saNodes.forEach((node, i) => {
+                const angle = (i * (360 / total) - 90) * (Math.PI / 180);
+                const nx = sCx + sRadius * Math.cos(angle);
+                const ny = sCy + sRadius * Math.sin(angle);
+                node.style.left = (nx - 40) + 'px';
+                node.style.top = (ny - 40) + 'px';
+
+                const conn = document.getElementById('sc' + i);
+                if (conn) {
+                    const dx = nx - sCx;
+                    const dy = ny - sCy;
+                    const dist = Math.hypot(dx, dy);
+                    const angDeg = Math.atan2(dy, dx) * (180 / Math.PI);
+                    conn.style.width = dist + 'px';
+                    conn.style.transform = `rotate(${angDeg}deg)`;
+                }
+            });
+        }
+        saLayout();
+
+        window.saSelectSpec = function (idx) {
+            saNodes.forEach(n => n.classList.remove('active'));
+            const activeNode = document.querySelector(`.circ-node[data-idx="${idx}"]`);
+            if (activeNode) activeNode.classList.add('active');
+
+            const data = saSpecs[idx];
+            saCenter.style.transform = 'translate(-50%,-50%) scale(0.9)';
+            saCenter.style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('s-ci').textContent = data.i;
+                document.getElementById('s-cn').textContent = data.n;
+                document.getElementById('s-cm').textContent = data.m;
+                document.getElementById('s-cd').textContent = data.d;
+                saCenter.style.transform = 'translate(-50%,-50%) scale(1)';
+                saCenter.style.opacity = '1';
+            }, 150);
+
+            const rot = -(idx * (360 / saNodes.length));
+            saRing.style.transform = `rotate(${rot}deg)`;
+        };
     </script>
 </body>
 
